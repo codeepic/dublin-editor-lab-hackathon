@@ -1,0 +1,9 @@
+<section [@sportInputs]="animationState">
+    <fieldset *ngFor="let sportType of sportTypes, let i = index" (click)="onToggle(i)">
+        <span class="checkbox-icon-bg">
+            <i class="fa fa-check check-icon" [class.inactive]="!sportType.active"></i>
+        </span>
+        <label>{{sportType.name}}</label>
+    </fieldset>
+    <button (click)="onNext()">Next</button>
+</section>

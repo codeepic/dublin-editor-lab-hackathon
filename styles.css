@@ -1,5 +1,48 @@
+/*TYPOGRAPHY*/
+body{
+  font-size: 18px;
+  font-family: 'Muli', Arial, sans-serif;
+  font-weight: 300; /*Light*/
+  font-style: normal;
+  color: #999;
+}
+
+/*LAYOUT*/
+
 .container-fluid{
   /*max-width: 111.4285714285714em; //1560/14*/
-  max-width: 86.66666666666667em; //1560/14
-  border: 1px dashed black;
+  max-width: 66.66666666666667em; /*1200/18*/
+  /*border: 1px dashed black;*/
 }
+
+/*BASE*/
+
+button, .btn{
+  cursor: pointer;
+  background: #999;
+  color: #fff;
+  transition: 0.3s all ease-in;
+  border: none;
+  outline: none;
+}
+
+button:hover,
+.btn:hover{
+  background: #777;
+}
+
+
+span.checkbox-icon-bg {
+  display: inline-block;
+  border: 1px solid #999;
+  width: 20px;
+  height: 20px;
+}
+
+span.checkbox-icon-bg i.fa-check.check-icon {
+  margin: 3px 0 0 3px;
+  opacity: 1;
+  transition: 0.2s all ease-in;
+}
+
+span.checkbox-icon-bg i.fa-check.check-icon.inactive { opacity: 0; }

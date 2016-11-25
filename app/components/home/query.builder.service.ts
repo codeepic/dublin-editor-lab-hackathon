@@ -14,11 +14,17 @@ export class QueryBuilderService{
         this.query.competitors = comps;
         console.log('this query', this.query);
     }
+
+    storeSportType(types: string[]){
+        this.query.sportTypes= types;
+        console.log('this query', this.query);
+    }
 }
 
 class Query{
     publication: Publication;
     competitors: Publication[];
+    sportTypes: string[];
     // constructor(
     //     public publication: Publication = new Publication(),
     //     public competitors: Publication[] = [new Publication()]

@@ -1,9 +1,11 @@
 <section class="publication-input" [@publicationInput]="animationState">
   <form [formGroup]="publicationNameForm" (ngSubmit)="onSubmit()">
+
     <fieldset class="clearfix">
       <label for="publication-name">Your Publication Name</label>
       <input type="text" id="publication-name" class="form-control" formControlName="publicationName" autocomplete="off">
     </fieldset>
+
     <button>Next</button>
   </form>
 </section>

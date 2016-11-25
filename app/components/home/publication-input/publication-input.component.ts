@@ -1,6 +1,6 @@
 import {Component, ViewChild, OnChanges, SimpleChange, ElementRef, Input, Output, EventEmitter, trigger, state, style, transition, animate} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {AnalyticsBaseComponent} from "../../common/analytics-base.component";
+import {BaseComponent} from "../../common/analytics-base.component";
 import {QueryBuilderService} from "../query.builder.service";
 import {Publication} from "../models/publication.model";
 
@@ -17,11 +17,11 @@ import {Publication} from "../models/publication.model";
           opacity: 1,
           display: 'block'
         })),
-        transition('hidden <=> visible', animate('800ms ease-in'))
+        transition('hidden <=> visible', animate('600ms ease-in'))
       ])
   ],
 })
-export class PublicationInputComponent extends AnalyticsBaseComponent{
+export class PublicationInputComponent extends BaseComponent{
   @Output() moveNext: EventEmitter<null> = new EventEmitter<null>();
   publicationNameForm: FormGroup;
   publication: Publication;
@@ -102,6 +102,6 @@ export class PublicationInputComponent extends AnalyticsBaseComponent{
 
     setTimeout(() => {
       this.moveNext.emit(null);
-    }, 800); //animate delay
+    }, 600); //animate delay
   }
 }

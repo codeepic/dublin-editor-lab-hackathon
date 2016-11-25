@@ -9,6 +9,8 @@ import {HomeComponent} from "../home/home.component";
 import {PublicationInputComponent} from "../home/publication-input/publication-input.component";
 import {QueryBuilderService} from "../home/query.builder.service";
 import {CompetitorsInputsComponent} from "../home/competitors-inputs/competitors-inputs.component";
+import {SportInputComponent} from "../home/sport-input/sport-input.component";
+import {MatchesComponent} from "../matches/matches.component";
 
 @NgModule({
   imports:      [
@@ -26,7 +28,9 @@ import {CompetitorsInputsComponent} from "../home/competitors-inputs/competitors
     AppComponent,
     HomeComponent,
     PublicationInputComponent,
-    CompetitorsInputsComponent
+    CompetitorsInputsComponent,
+    SportInputComponent,
+    MatchesComponent
   ],
   bootstrap:    [ AppComponent ]
 })

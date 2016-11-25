@@ -1,7 +1,7 @@
 import { OnDestroy, OnInit, DoCheck} from '@angular/core';
 import {Subscription} from "rxjs";
 
-export abstract class AnalyticsBaseComponent implements OnDestroy, OnInit{ //DoCheck
+export abstract class BaseComponent implements OnDestroy, OnInit{ //DoCheck
   subscriptions: Subscription[] = [];
 
   addSubscription(sub: Subscription){

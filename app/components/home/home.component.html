@@ -1,8 +1,7 @@
 <div class="container-fluid">
-    <h1>Home compo</h1>
-    <h2>{{wel}}</h2>
+    <h1>Fixture</h1>
 
     <publication-input (moveNext)="onMoveToCompetitors($event)"></publication-input>
-    <competitors-inputs></competitors-inputs>
-
+    <competitors-inputs (moveNext)="onMoveToSportsTypes($event)"></competitors-inputs>
+    <sport-input></sport-input>
 </div>

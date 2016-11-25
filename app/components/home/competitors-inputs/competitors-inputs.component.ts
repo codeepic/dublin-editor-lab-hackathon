@@ -1,6 +1,6 @@
 import {Component, ViewChild, OnChanges, SimpleChange, ElementRef, Input, Output, EventEmitter, trigger, state, style, transition, animate} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {AnalyticsBaseComponent} from "../../common/analytics-base.component";
+import {BaseComponent} from "../../common/analytics-base.component";
 import {QueryBuilderService} from "../query.builder.service";
 import {Publication} from "../models/publication.model";
 
@@ -17,14 +17,14 @@ import {Publication} from "../models/publication.model";
           opacity: 1,
           display: 'block'
         })),
-        transition('hidden <=> visible', animate('200ms ease-in'))
+        transition('hidden <=> visible', animate('600ms ease-in'))
       ])
   ],
 })
-export class CompetitorsInputsComponent extends AnalyticsBaseComponent{
+export class CompetitorsInputsComponent extends BaseComponent{
   @Output() moveNext: EventEmitter<null> = new EventEmitter<null>();
   animationState: string = 'hidden';
-  competitors: Publication[]
+  competitors: Publication[];
 
   constructor(
     private queryBuilderService: QueryBuilderService
@@ -33,7 +33,9 @@ export class CompetitorsInputsComponent extends AnalyticsBaseComponent{
   }
 
   ngOnInit(): void {
-    this.competitors = [new Publication()];
+    this.competitors = Array.apply(null, Array(5)).map(() => new Publication());
+    console.log('this.competitors: ', this.competitors);
+    //this.panels = Array.apply(null, Array(4)).map(() => new Panel());
   }
 
   // buildForm(): void {
@@ -90,14 +92,17 @@ export class CompetitorsInputsComponent extends AnalyticsBaseComponent{
   }
 
   onNext(){
-    this.queryBuilderService.storeCompetitors(this.competitors);
+    this.queryBuilderService.storeCompetitors(this.competitors.filter(c => c.name));
 
     this.moveToNextStep();
   }
 
   moveToNextStep(){
     this.animationState = 'hidden';
-    this.moveNext.emit(null);
+
+    setTimeout(() => {
+      this.moveNext.emit(null);
+    }, 600); //animate delay
   }
 
   show(){
