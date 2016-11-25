@@ -1,14 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {CompetitorsInputsComponent} from "./competitors-inputs/competitors-inputs.component";
 
 @Component({
     selector: 'home',
-    template: `
-        <div>
-            <h1>Home compo</h1>
-            <h2>{{wel}}</h2>
-        </div>
-    `
+    templateUrl: './app/components/home/home.component.html'
 })
 export class HomeComponent{
+    @ViewChild(CompetitorsInputsComponent) competitorsInputsComponent: CompetitorsInputsComponent
     wel = 'see me ?';
+
+    onMoveToCompetitors($event: any){
+        //communicate with competutot
+
+        this.competitorsInputsComponent.show()
+    }
 }

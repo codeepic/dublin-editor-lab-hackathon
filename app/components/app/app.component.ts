@@ -5,6 +5,7 @@ import {RequestService} from "../common/request.service";
   selector: 'my-app',
   template: `
     <h1>simple {{name}}</h1>
+    
     <button (click)="onCategorySearch()">Search</button>
     <router-outlet></router-outlet>
   `,

@@ -6,6 +6,9 @@ import {HttpModule} from "@angular/http";
 import {RequestService} from "../common/request.service";
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {HomeComponent} from "../home/home.component";
+import {PublicationInputComponent} from "../home/publication-input/publication-input.component";
+import {QueryBuilderService} from "../home/query.builder.service";
+import {CompetitorsInputsComponent} from "../home/competitors-inputs/competitors-inputs.component";
 
 @NgModule({
   imports:      [
@@ -15,10 +18,15 @@ import {HomeComponent} from "../home/home.component";
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [RequestService],
+  providers: [
+    RequestService,
+    QueryBuilderService
+  ],
   declarations: [
-      AppComponent,
-      HomeComponent
+    AppComponent,
+    HomeComponent,
+    PublicationInputComponent,
+    CompetitorsInputsComponent
   ],
   bootstrap:    [ AppComponent ]
 })

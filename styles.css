@@ -1,5 +1,5 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+.container-fluid{
+  /*max-width: 111.4285714285714em; //1560/14*/
+  max-width: 86.66666666666667em; //1560/14
+  border: 1px dashed black;
 }
