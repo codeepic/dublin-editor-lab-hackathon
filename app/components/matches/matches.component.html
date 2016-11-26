@@ -1,12 +1,12 @@
-<section class="matches">
-  <div class="clearfix">
-    <h1 class="teal-bg">Premier League Football</h1>
+<section class="matches white-bg">
+  <div class="clearfix teal-bg">
+    <h1>Premier League Football</h1>
 	<span class="dash-mock"></span>
   </div>
     <ul>
     	<li *ngFor="let match of matches" (click)="onGetMatchDetails([match.homeTeam.name, match.awayTeam.name])">
-    		<p>{{prettyTime(match.start)}}</p>
-    		<div>
+			<span class="time">{{prettyTime(match.start)}}</span>
+    		<div class="box">
     			<h3>{{match.homeTeam.name}}</h3>
     			<p>vs</p>
     			<h3>{{match.awayTeam.name}}</h3>

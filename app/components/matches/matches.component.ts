@@ -11,8 +11,7 @@ declare var moment: any;
     templateUrl: './app/components/matches/matches.component.html',
     styles: [`
       .matches{
-        width: 94%;
-        margin: 30px auto;
+        padding: 30px;
       }
       
       h1{
@@ -23,18 +22,20 @@ declare var moment: any;
       }
       
       .dash-mock{
-        background: url('assets/img/dash-mock/png') 0 0 no-repeat;
+        background: url('assets/img/dash-mock.png') 0 0 no-repeat;
         display: block;
         float: right;
         width: 447px;
         height: 55px;
+        margin-top: 13px;
+        margin-right: 4px;
       }
         
       ul{
         padding: 20px;
       }  
         
-      li{
+      li {
         display: inline-block;
         width: 25%;
         margin-right: 30px;
@@ -47,14 +48,20 @@ declare var moment: any;
       
       li h3,
       li p{
-            text-align: center;
+        text-align: center;
       }
       
-      .matches li h3{
+      li span{
+          display: block;
+          font-size: 14px;
+          margin-bottom: 40px;
+      }
+      
+      .box li h3{
         font-size: 21px;
       }
       
-      .matches li p{
+      .box li p{
         font-size: 24px;
         color: #c6c9f5;
       }

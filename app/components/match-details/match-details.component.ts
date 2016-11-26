@@ -13,6 +13,7 @@ declare var moment: any;
         .treemap{
             width: 60%;
             float: left;
+            background: #f0f1ff;
         }
         
         .articles{

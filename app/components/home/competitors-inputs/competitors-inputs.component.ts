@@ -58,9 +58,26 @@ export class CompetitorsInputsComponent extends BaseComponent{
   }
 
   ngOnInit(): void {
-    this.competitors = Array.apply(null, Array(5)).map(() => new Publication());
-    console.log('this.competitors: ', this.competitors);
-    //this.panels = Array.apply(null, Array(4)).map(() => new Panel());
+    this.competitors = Array.apply(null, Array(5)).map(() => new Publication())
+
+    // this.competitors = [
+    //   {
+    //     name: '',
+    //     domain: 'theguardian.co.uk'
+    //   },
+    //   {
+    //     name: '',
+    //     domain: 'theguardian.co.uk'
+    //   },
+    //   {
+    //     name: '',
+    //     domain: 'theguardian.co.uk'
+    //   },
+    //   {
+    //     name: '',
+    //     domain: 'theguardian.co.uk'
+    //   }
+    // ];
   }
 
   // buildForm(): void {
