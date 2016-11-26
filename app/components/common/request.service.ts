@@ -11,7 +11,6 @@ import {Publication} from "../home/models/publication.model";
 @Injectable()
 export class RequestService{
     private apiKey: string = 'T4hC9wTT7p83C';
-    //newswhip api key: T4hC9wTT7p83C ////
 
     constructor(
         private http: Http,
@@ -19,48 +18,53 @@ export class RequestService{
     ){}
 
     buildFilters(): string{
-          const queryObj: Query = this.queryBuilderService.getQueryObj();
+        const queryObj: Query = this.queryBuilderService.getQueryObj();
 
-          let filter: string = queryObj.publication.domain;
+        let filter: string = queryObj.publication.domain;
 
-          queryObj.competitors.forEach((comp: Publication) => {
-            filter += ` and ${comp.domain}`;
-          });
+        queryObj.competitors.forEach((comp: Publication) => {
+          filter += ` and ${comp.domain}`;
+        });
 
-          queryObj.teamNames.forEach((tN: string) => {
-            filter += ` and headline:${tN}`;
-          });
+        filter += ' and '
 
-      console.log('filter: ', filter);
-      return filter;
+        let teamNames = queryObj.teamNames.map(tn => `headline:${tn}`);
+
+        filter += teamNames.join(' or ');
+
+        // queryObj.teamNames.forEach((tN: string) => {
+        //   filter += ` and headline:${tN}`;
+        // });
+
+        console.log('filter: ', filter);
+        return filter;
     }
 
     //get the top trending stories
     getMatchDetails(): Observable<any>{
-          let headers = new Headers();
-          headers.append('Content-Type', 'application/json');
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
-          const body = JSON.stringify({
-            "filters": [
-                  // "country_code:us OR country_code:gb and -publisher:youtube.com and headline:rihanna"
-                  //"publisher:youtube.com and headline:rihanna"
-                this.buildFilters()
-              ],
-              "language": "en",
-              "video_only": false,
-              "sort_by": "nw_max_score", //fb_total, twitter, linkedin, pinterest {{concatenate with}} count, min, max, avg, sum, sum_of_squares, variance, std_dev
-              "find_related": false,
-              "size": 5,
+        const body = JSON.stringify({
+          "filters": [
+                // "country_code:us OR country_code:gb and -publisher:youtube.com and headline:rihanna"
+                //"publisher:youtube.com and headline:rihanna"
+              this.buildFilters()
+            ],
+            "language": "en",
+            "video_only": false,
+            "sort_by": "nw_max_score", //fb_total, twitter, linkedin, pinterest {{concatenate with}} count, min, max, avg, sum, sum_of_squares, variance, std_dev
+            "find_related": false,
+            "size": 5,
+        });
+
+        return this.http.post('https://api.newswhip.com/v1/articles?key=T4hC9wTT7p83C', '', { headers, body })
+          .map(response => response.json())
+          .catch((err: any, caught: Observable<any>) => {
+            console.error(err);
+            return Observable.throw(err.message);
           });
-
-          return this.http.post('https://api.newswhip.com/v1/articles?key=T4hC9wTT7p83C', { headers, body })
-            .map(response => response.json())
-            .catch((err: any, caught: Observable<any>) => {
-              console.error(err);
-              return Observable.throw(err.message);
-            });
     }
-
 
     /*
     * $client = new Client();
@@ -80,35 +84,36 @@ export class RequestService{
      ?>
     * */
 
-    // getCategories(): Observable<any>{ //: Observable<any>{
-    //     console.log('fetching');
-    //     // let query = form.value;
-    //
-    //     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
-    //
-    //     const body = JSON.stringify({
-    //         "filters": [
-    //             "country_code:us OR country_code:gb and -publisher:youtube.com and headline:rihanna"
-    //         ],
-    //         "language": "en",
-    //         "video_only": false,
-    //         "sort_by": "nw_max_score", //fb_total, twitter, linkedin, pinterest {{concatenate with}} count, min, max, avg, sum, sum_of_squares, variance, std_dev
-    //         "find_related": false,
-    //         "size": 5,
-    //         // "from": 12345,
-    //         // "to": 12346,
-    //         // "default_field": "something",
-    //         // "content_type": "something"
-    //     });
-    //
-    //     return this.http.post('https://api.newswhip.com/v1/articles?key=T4hC9wTT7p83C', '', { headers, body })
-    //         .map(response => response.json())
-    //         //.catch(this.handleError);
-    //         .catch((err: any, caught: Observable<any>) => {
-    //             console.error(err);
-    //             return Observable.throw(err.message);
-    //         });
-    // }
+    getCategories(): Observable<any>{ //: Observable<any>{
+        console.log('fetching');
+        // let query = form.value;
+
+        const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+
+        const body = JSON.stringify({
+            "filters": [
+                "publisher:youtube.com and headline:rihanna"
+                // "country_code:us OR country_code:gb and -publisher:youtube.com and headline:rihanna"
+            ],
+            "language": "en",
+            "video_only": false,
+            "sort_by": "nw_max_score", //fb_total, twitter, linkedin, pinterest {{concatenate with}} count, min, max, avg, sum, sum_of_squares, variance, std_dev
+            "find_related": false,
+            "size": 5,
+            // "from": 12345,
+            // "to": 12346,
+            // "default_field": "something",
+            // "content_type": "something"
+        });
+
+        return this.http.post('https://api.newswhip.com/v1/articles?key=T4hC9wTT7p83C', '', { headers, body })
+            .map(response => response.json())
+            //.catch(this.handleError);
+            .catch((err: any, caught: Observable<any>) => {
+                console.error(err);
+                return Observable.throw(err.message);
+            });
+    }
 //
     // handleError(error: any, caught: Observable<any>){
     //     let errorMessage = (error.message) ? error.message :

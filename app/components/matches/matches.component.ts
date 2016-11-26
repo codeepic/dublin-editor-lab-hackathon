@@ -48,7 +48,7 @@ export class MatchesComponent extends BaseComponent{
     }
 
     prettyTime(unix: number): string{
-      return new moment().format('LLLL');
+      return new moment(unix).format('LLLL');
     }
 
     onGetMatchDetails(teamNames: string[]){
