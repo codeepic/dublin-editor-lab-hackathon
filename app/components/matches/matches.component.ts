@@ -11,15 +11,52 @@ declare var moment: any;
     templateUrl: './app/components/matches/matches.component.html',
     styles: [`
       .matches{
-        border: 1px solid red;
+        width: 94%;
+        margin: 30px auto;
       }
-
-      .matches li{
+      
+      h1{
+        font-size: 24px;
+        height: 73px;
+        float: left;
+        width: 300px;
+      }
+      
+      .dash-mock{
+        background: url('assets/img/dash-mock/png') 0 0 no-repeat;
+        display: block;
+        float: right;
+        width: 447px;
+        height: 55px;
+      }
+        
+      ul{
+        padding: 20px;
+      }  
+        
+      li{
         display: inline-block;
-        width: 33%;
-        border: 1px solid black;
+        width: 25%;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        border: 1px solid #d4d6f0;
+        box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.13);
         padding: 20px;
         min-height: 300px;
+      }
+      
+      li h3,
+      li p{
+            text-align: center;
+      }
+      
+      .matches li h3{
+        font-size: 21px;
+      }
+      
+      .matches li p{
+        font-size: 24px;
+        color: #c6c9f5;
       }
     `]
 })

@@ -2,20 +2,34 @@ import {Component} from '@angular/core';
 import {BaseComponent} from "../common/analytics-base.component";
 import {RequestService} from "../common/request.service";
 import {count} from "rxjs/operator/count";
+import {QueryBuilderService} from "../home/query.builder.service";
 
 declare var moment: any;
 
 @Component({
   selector: 'match-details',
   templateUrl: './app/components/match-details/match-details.component.html',
+    styles: [`
+        .treemap{
+            width: 60%;
+            float: left;
+        }
+        
+        .articles{
+            width: 40%;
+            float: right;
+        }
+    `]
 })
 
 export class MatchDetailsComponent extends BaseComponent{
     articlesData: any;
     topStatsData: any;
+    headline: string;
 
     constructor(
-      private requestService: RequestService
+      private requestService: RequestService,
+      private queryBuilderService: QueryBuilderService
     ){
       super();
     }
@@ -23,6 +37,13 @@ export class MatchDetailsComponent extends BaseComponent{
     ngOnInit(){
       this.getMatchDetails();
       this.getMatchTopStats();
+
+      this.buildHeadline();
+    }
+
+    buildHeadline(){
+        const teamNames = this.queryBuilderService.getQueryObj().teamNames;
+        this.headline = teamNames[0] + ' vs ' + teamNames[1];
     }
 
     getMatchDetails(){
