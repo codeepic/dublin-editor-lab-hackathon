@@ -19,6 +19,8 @@ declare var moment: any;
         height: 73px;
         float: left;
         width: 300px;
+        padding-top: 25px;
+        padding-left: 20px;
       }
       
       .dash-mock{
@@ -54,7 +56,7 @@ declare var moment: any;
       li span{
           display: block;
           font-size: 14px;
-          margin-bottom: 40px;
+          margin-bottom: 60px;
       }
       
       .box li h3{

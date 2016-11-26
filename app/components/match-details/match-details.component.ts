@@ -37,7 +37,7 @@ export class MatchDetailsComponent extends BaseComponent{
 
     ngOnInit(){
       this.getMatchDetails();
-      this.getMatchTopStats();
+      // this.getMatchTopStats();
 
       this.buildHeadline();
     }
@@ -51,17 +51,17 @@ export class MatchDetailsComponent extends BaseComponent{
       this.requestService.getMatchRelatedArticles()
         .subscribe(data => {
           this.articlesData = data;
-          console.log('%c match detals data: ', 'border: 1px solid green', data);
+          console.log('%c match details data: ', 'background: pink;', data);
         })
     }
-
-  getMatchTopStats(){
-    this.requestService.getMatchTopStats()
-      .subscribe(data => {
-        this.topStatsData = data;
-        console.log('%c match TOP STATS: ', 'background: orange', data);
-      })
-  }
+  //
+  // getMatchTopStats(){
+  //   this.requestService.getMatchTopStats()
+  //     .subscribe(data => {
+  //       this.topStatsData = data;
+  //       console.log('%c match TOP STATS: ', 'background: orange', data);
+  //     })
+  // }
 
     prettyTime(unix: number): string{
         return new moment(unix).format('LLLL');
