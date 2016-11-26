@@ -23,7 +23,7 @@ body{
   color: #000;
 }
 
-h1,h2,h3,h4,h5,h6, p, li, input{
+h1,h2,h3,h4,h5,h6, p, li, input, label{
   color: #000;
   font-family: 'Muli', Arial, sans-serif;
   font-weight: 300;
@@ -71,12 +71,16 @@ button:hover,
 span.checkbox-icon-bg {
   display: inline-block;
   border: 1px solid #999;
+  background: #fff;
   width: 20px;
   height: 20px;
 }
 
 span.checkbox-icon-bg i.fa-check.check-icon {
-  margin: 3px 0 0 3px;
+  /*margin: 3px 0 0 3px;*/
+  -webkit-transform: translate(0,-3px);
+  -moz-transform: translate(0,-3px);
+  transform: translate(0,-3px);
   opacity: 1;
   transition: 0.2s all ease-in;
 }
@@ -86,6 +90,10 @@ span.checkbox-icon-bg i.fa-check.check-icon.inactive { opacity: 0; }
 
 .teal-bg{
   background: #f0f2ff;
+}
+
+.white-bg{
+  background: #fff;
 }
 
 

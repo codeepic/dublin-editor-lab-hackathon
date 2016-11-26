@@ -22,7 +22,13 @@ import {Router} from "@angular/router";
     ],
     styles: [`
         .sport-input{
+            width: 340px;
+            margin: 0 auto;
+            padding-top: 100px;
+        }
         
+        .sport-input .sport-wrapper{
+            margin-top: 15px;
         }
     `]
 })

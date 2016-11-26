@@ -1,7 +1,7 @@
 <section [@sportInputs]="animationState" class="sport-input teal-bg">
-    <p>What sports do you want to follow</p>
+    <p>What sports do you want to follow?</p>
 
-    <fieldset *ngFor="let sportType of sportTypes, let i = index" (click)="onToggle(i)">
+    <fieldset class="sport-wrapper" *ngFor="let sportType of sportTypes, let i = index" (click)="onToggle(i)">
         <span class="checkbox-icon-bg">
             <i class="fa fa-check check-icon" [class.inactive]="!sportType.active"></i>
         </span>
@@ -9,6 +9,6 @@
     </fieldset>
 
     <div class="clearfix">
-        <button (click)="onNext()">Finish</button>
+        <button class="pull-right" (click)="onNext()">Finish</button>
     </div>
 </section>
