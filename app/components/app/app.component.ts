@@ -11,17 +11,16 @@ import {RequestService} from "../common/request.service";
   `,
 })
 export class AppComponent  {
-  name = 'app';
 
   constructor(
       private requestService: RequestService
   ){}
 
-  onCategorySearch(){
-    console.log('clicked');
-    this.requestService.getCategories()
-        .subscribe(data => {
-          console.log('fetched data: ', data);
-        })
-  }
+  // onCategorySearch(){
+  //   console.log('clicked');
+  //   this.requestService.getCategories()
+  //       .subscribe(data => {
+  //         console.log('fetched data: ', data);
+  //       })
+  // }
 }

@@ -5,6 +5,10 @@ import {Publication} from "./models/publication.model";
 export class QueryBuilderService{
     query: Query = new Query();
 
+    getQueryObj(): Query{
+        return this.query;
+    }
+
     storePublication(pub: Publication){
         this.query.publication = pub;
         console.log('this query', this.query);
@@ -19,14 +23,17 @@ export class QueryBuilderService{
         this.query.sportTypes= types;
         console.log('this query', this.query);
     }
+
+    storeTeamNames(names: string[]){
+        this.query.teamNames = names;
+        console.log('this query', this.query);
+    }
 }
 
-class Query{
+export class Query{
     publication: Publication;
     competitors: Publication[];
     sportTypes: string[];
-    // constructor(
-    //     public publication: Publication = new Publication(),
-    //     public competitors: Publication[] = [new Publication()]
-    // ){}
+    teamNames: string[];
+
 }

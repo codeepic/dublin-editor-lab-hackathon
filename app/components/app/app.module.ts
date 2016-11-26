@@ -12,6 +12,7 @@ import {CompetitorsInputsComponent} from "../home/competitors-inputs/competitors
 import {SportInputComponent} from "../home/sport-input/sport-input.component";
 import {MatchesComponent} from "../matches/matches.component";
 import {MatchesService} from "../matches/matches.service";
+import {MatchDetailsComponent} from "../match-details/match-details.component";
 
 @NgModule({
   imports:      [
@@ -32,7 +33,8 @@ import {MatchesService} from "../matches/matches.service";
     PublicationInputComponent,
     CompetitorsInputsComponent,
     SportInputComponent,
-    MatchesComponent
+    MatchesComponent,
+    MatchDetailsComponent
   ],
   bootstrap:    [ AppComponent ]
 })

@@ -1,6 +1,7 @@
 <section class="matches">
+  <h1>Premier League</h1>
     <ul>
-    	<li *ngFor="let match of matches">
+    	<li *ngFor="let match of matches" (click)="onGetMatchDetails([match.homeTeam.name, match.awayTeam.name])">
     		<p>{{prettyTime(match.start)}}</p>
     		<div>
     			<h3>{{match.homeTeam.name}}</h3>

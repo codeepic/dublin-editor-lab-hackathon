@@ -41,7 +41,7 @@ export class PublicationInputComponent extends BaseComponent{
 
   buildForm(): void {
     this.publicationNameForm = this.formBuilder.group({
-      'publicationName': [this.publication.name, [
+      'publicationDomain': [this.publication.domain, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(24)
@@ -78,11 +78,11 @@ export class PublicationInputComponent extends BaseComponent{
   }
 
   formErrors = {
-    'publicationName': ''
+    'publicationDomain': ''
   };
 
   validationMessages = {
-    'publicationName': {
+    'publicationDomain': {
       'required':      'Name is required.',
       'minlength':     'Name must be at least 4 characters long.',
       'maxlength':     'Name cannot be more than 24 characters long.'
@@ -90,7 +90,7 @@ export class PublicationInputComponent extends BaseComponent{
   };
 
   onSubmit(){
-    this.publication = this.publicationNameForm.value.publicationName;
+    this.publication.domain = this.publicationNameForm.value.publicationDomain;
     console.log('this.publication: ', this.publication);
     this.queryBuilderService.storePublication(this.publication);
 
