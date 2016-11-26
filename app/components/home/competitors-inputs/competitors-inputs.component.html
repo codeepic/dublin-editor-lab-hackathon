@@ -1,8 +1,9 @@
 <section class="competitors-inputs" [@competitorsInputs]="animationState">
 
   <fieldset class="clearfix" *ngFor="let comp of competitors, let i = index">
-    <label for="competitor-name-{{i}}">Competitor Name</label>
-    <input type="text" id="competitor-name={{i}}" class="form-control" [(ngModel)]="comp.domain" autocomplete="off">
+    <!--<label for="competitor-name-{{i}}">Competitor Name</label>-->
+    <input type="text" id="competitor-name={{i}}" class="form-control" [(ngModel)]="comp.domain"
+           autocomplete="off" placeholder="competitor">
   </fieldset>
 
   <span class="btn"(click)="onAddCompetitor()">Add Competitor</span>

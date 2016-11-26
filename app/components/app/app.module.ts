@@ -11,6 +11,7 @@ import {QueryBuilderService} from "../home/query.builder.service";
 import {CompetitorsInputsComponent} from "../home/competitors-inputs/competitors-inputs.component";
 import {SportInputComponent} from "../home/sport-input/sport-input.component";
 import {MatchesComponent} from "../matches/matches.component";
+import {MatchesService} from "../matches/matches.service";
 
 @NgModule({
   imports:      [
@@ -22,7 +23,8 @@ import {MatchesComponent} from "../matches/matches.component";
   ],
   providers: [
     RequestService,
-    QueryBuilderService
+    QueryBuilderService,
+    MatchesService
   ],
   declarations: [
     AppComponent,

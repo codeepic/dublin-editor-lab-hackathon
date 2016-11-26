@@ -1,3 +1,12 @@
-<section>
-    matchces heres
+<section class="matches">
+    <ul>
+    	<li *ngFor="let match of matches">
+    		<p>{{prettyTime(match.start)}}</p>
+    		<div>
+    			<h3>{{match.homeTeam.name}}</h3>
+    			<p>vs</p>
+    			<h3>{{match.awayTeam.name}}</h3>
+    		</div>
+    	</li>
+    </ul>
 </section>

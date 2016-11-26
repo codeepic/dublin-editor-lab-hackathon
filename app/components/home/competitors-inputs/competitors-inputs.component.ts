@@ -92,7 +92,9 @@ export class CompetitorsInputsComponent extends BaseComponent{
   }
 
   onNext(){
-    this.queryBuilderService.storeCompetitors(this.competitors.filter(c => c.name));
+    // console.log('this competitors: ', this.competitors);
+    // console.log('this.competitors.filter(c => c.name): ', this.competitors.filter(c => c.domain));
+    this.queryBuilderService.storeCompetitors(this.competitors.filter(c => c.domain));
 
     this.moveToNextStep();
   }
