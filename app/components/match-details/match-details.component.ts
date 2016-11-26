@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {BaseComponent} from "../common/analytics-base.component";
 import {RequestService} from "../common/request.service";
-import {count} from "rxjs/operator/count";
 import {QueryBuilderService} from "../home/query.builder.service";
 
 declare var moment: any;
@@ -19,6 +18,24 @@ declare var moment: any;
         .articles{
             width: 40%;
             float: right;
+        }
+        
+        .articles li{
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .article date{
+            font-size: 14px;
+        }
+        
+        .articles li img{
+            border: 1px solid #999;
+            padding: 10px;
+            max-width: 80%;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     `]
 })

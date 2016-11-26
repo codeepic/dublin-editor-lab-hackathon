@@ -39,6 +39,11 @@ ul, li{
 
 /*LAYOUT*/
 
+.container-fluid{
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /*.container-fluid{*/
   /*!*max-width: 66.66666666666667em; !*1200/18*!*!*/
   /*max-width: 1080px;*/
