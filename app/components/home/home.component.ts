@@ -22,11 +22,11 @@ export class HomeComponent{
     onMoveToSportsTypes($event: any){
         this.sportInputComponent.show();
     }
-
-    debug(){
-      this.matchesService.getMatches()
-        .subscribe(data => {
-          console.log('this.matches data ', data);
-        })
-    }
+    //
+    // debug(){
+    //   this.matchesService.getMatches()
+    //     .subscribe(data => {
+    //       console.log('this.matches data ', data);
+    //     })
+    // }
 }

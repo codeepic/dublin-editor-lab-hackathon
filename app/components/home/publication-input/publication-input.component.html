@@ -1,11 +1,34 @@
 <section class="publication-input" [@publicationInput]="animationState">
-  <form [formGroup]="publicationNameForm" (ngSubmit)="onSubmit()">
+  <div class="clearfix">
+    <div class="left-side">
+      <div class="welcome">
+        <h1>Welcome to Fixture <span>beta</span></h1>
+        <h2>by NewsWhip</h2>
+        <p>short sentence</p>
+      </div>
+    </div>
 
-    <fieldset class="clearfix">
-      <label for="publication-name">Your Publication</label>
-      <input type="text" id="publication-name" class="form-control" formControlName="publicationDomain" autocomplete="off">
-    </fieldset>
+    <div class="right-side teal-bg">
 
-    <button>Next</button>
-  </form>
+      <div class="step-1">
+        <form [formGroup]="publicationNameForm" (ngSubmit)="onSubmit()">
+
+          <h2>Let's get Started</h2>
+
+          <fieldset class="clearfix">
+            <label for="publication-name">What's your organization's URL?</label>
+            <input type="text" id="publication-name" class="form-control" formControlName="publicationDomain"
+                   autocomplete="off" placeholder="example: cnn.com/sport">
+          </fieldset>
+
+          <div class="clearfix">
+            <button class="pull-right">Next</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
 </section>

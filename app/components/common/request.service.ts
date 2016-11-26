@@ -55,11 +55,36 @@ export class RequestService{
           });
         })
         console.log(filters);
-        return filters;
+        //return filters;
+
+        return ['bbc.co.uk and headline:Manchester United']
+    }
+
+    getMatchTopStats(): Observable<any>{
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+        const body = JSON.stringify({
+            "filters": [
+              'Manchester United'
+              //'West Ham United',
+              ],
+            //"filters": this.buildFiltersArr(),
+            "language": "en",
+            "sort_by": "fb_total.sum", //fb_total, twitter, linkedin, pinterest {{concatenate with}} count, min, max, avg, sum, sum_of_squares, variance, std_dev
+            "aggregate_by" : "domain"
+        });
+
+        return this.http.post('https://api.newswhip.com/v1/stats?key=T4hC9wTT7p83C', '', { headers, body })
+            .map(response => response.json())
+            .catch((err: any, caught: Observable<any>) => {
+                console.error(err);
+                return Observable.throw(err.message);
+            });
     }
 
     //get the top trending stories
-    getMatchDetails(): Observable<any>{
+    getMatchRelatedArticles(): Observable<any>{
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 

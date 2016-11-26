@@ -1,12 +1,21 @@
-<section class="competitors-inputs" [@competitorsInputs]="animationState">
+<section class="teal-bg" [@competitorsInputs]="animationState">
 
-  <fieldset class="clearfix" *ngFor="let comp of competitors, let i = index">
-    <!--<label for="competitor-name-{{i}}">Competitor Name</label>-->
-    <input type="text" id="competitor-name={{i}}" class="form-control" [(ngModel)]="comp.domain"
-           autocomplete="off" placeholder="competitor">
-  </fieldset>
+  <div class="competitors-inputs">
+    <p>What sports websites do you want to compare yourself to?</p>
 
-  <span class="btn"(click)="onAddCompetitor()">Add Competitor</span>
-  <button (click)="onNext()">Next</button>
+    <fieldset class="clearfix" *ngFor="let comp of competitors, let i = index">
+      <!--<label for="competitor-name-{{i}}">Competitor Name</label>-->
+      <input type="text" id="competitor-name={{i}}" class="form-control" [(ngModel)]="comp.domain"
+             autocomplete="off">
+    </fieldset>
+
+    <div>
+      <span class="plus-btn btn"(click)="onAddCompetitor()">+</span>
+    </div>
+
+    <div class="clearfix">
+      <button class="pull-right" (click)="onNext()">Next</button>
+    </div>
+  </div>
 
 </section>

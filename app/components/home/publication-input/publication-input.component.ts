@@ -19,7 +19,45 @@ import {Publication} from "../models/publication.model";
         })),
         transition('hidden <=> visible', animate('600ms ease-in'))
       ])
-  ],
+    ],
+    styles: [`
+        .welcome{
+            width: 70%;
+            margin: 330px auto;
+        }
+
+        .welcome h1{
+            font-size: 36px; 
+        }
+        
+        .welcome h1 span,
+        .welcome h2{
+            font-size: 24px; 
+        }
+        
+        .welcome h2{
+            margin-bottom: 20px;
+        }
+        
+        .left-side{
+            float: left;
+            width: 50%;
+        }
+        
+        .right-side{
+            float: right;
+            width: 50%;
+        }
+        
+        .step-1{
+            width: 455px;
+            margin: 330px auto;
+        }
+        
+        .step-1 h2{
+            font-size: 24px;
+        }
+    `]
 })
 export class PublicationInputComponent extends BaseComponent{
   @Output() moveNext: EventEmitter<null> = new EventEmitter<null>();

@@ -20,6 +20,31 @@ import {Publication} from "../models/publication.model";
         transition('hidden <=> visible', animate('600ms ease-in'))
       ])
   ],
+  styles: [`
+        .competitors-inputs{
+            width: 550px;
+            margin: 0 auto;
+            padding-top: 100px
+        }
+        
+        .competitors-inputs input.form-control{
+            width: 550px;
+        }
+
+        .competitors-inputs .plus-btn.btn{
+            color: #fff !important;
+            border-radius: 0;
+            margin-left: 0;
+            margin-top: 20px;
+            display: block;
+            height: 44px;
+            width: 44px;
+            border: 2px solid #5563d0;
+            color: #5563d0;
+            font-size: 20px;
+            text-align: center; 
+        }
+    `]
 })
 export class CompetitorsInputsComponent extends BaseComponent{
   @Output() moveNext: EventEmitter<null> = new EventEmitter<null>();

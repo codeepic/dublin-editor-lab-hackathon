@@ -1,1 +1,17 @@
-<h2>Match Details</h2>
+<section class="match-details">
+  <h2>Match Details</h2>
+
+  <ul>
+    <li *ngFor="let a of articlesData?.articles">
+      <div>
+        <p>{{prettyTime(a.publiction_timestamp)}}</p>
+        <img src="{{a.image_link}}" alt="">
+        <h4>{{a.headline}}</h4>
+        <p>{{a.excerpt}}</p>
+        <p><a href="{{a.link}}" target="_blank">Go to article</a></p>
+        <p>Enagagement: {{getTotalEngagement(a)}}</p>
+        <p>Publisher: {{a.source.publisher}}</p>
+      </div>
+    </li>
+  </ul>
+</section>

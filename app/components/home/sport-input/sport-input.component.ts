@@ -20,6 +20,11 @@ import {Router} from "@angular/router";
             transition('hidden <=> visible', animate('600ms ease-in'))
         ])
     ],
+    styles: [`
+        .sport-input{
+        
+        }
+    `]
 })
 export class SportInputComponent extends BaseComponent{
     animationState: string = 'hidden';
