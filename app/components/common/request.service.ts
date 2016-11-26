@@ -17,27 +17,45 @@ export class RequestService{
         private queryBuilderService: QueryBuilderService
     ){}
 
+    // buildFilters(): string{
+    //     const queryObj: Query = this.queryBuilderService.getQueryObj();
+    //
+    //     let filter: string = `publisher:${queryObj.publication.domain}`;
+    //
+    //     // queryObj.competitors.forEach((comp: Publication) => {
+    //     //   filter += ` and publisher:${comp.domain}`;
+    //     // });
+    //
+    //     filter += ' and '
+    //
+    //     let teamNames = queryObj.teamNames.map(tn => `headline:${tn}`);
+    //
+    //     filter += teamNames.join(' or ');
+    //
+    //     console.log('filter: ', filter);
+    //     return filter;
+    // }
+
     buildFilters(): string{
-        const queryObj: Query = this.queryBuilderService.getQueryObj();
-
-        let filter: string = queryObj.publication.domain;
-
-        queryObj.competitors.forEach((comp: Publication) => {
-          filter += ` and ${comp.domain}`;
-        });
-
-        filter += ' and '
-
-        let teamNames = queryObj.teamNames.map(tn => `headline:${tn}`);
-
-        filter += teamNames.join(' or ');
-
-        // queryObj.teamNames.forEach((tN: string) => {
-        //   filter += ` and headline:${tN}`;
-        // });
-
-        console.log('filter: ', filter);
+        //let filter = 'publisher:bbc.com and headline:Arsenal'; //no data
+        // let filter = "publisher:bbc.co.uk and headline:Arsenal";
+        // let filter = "publisher:bbc.co.uk and headline:Arsenal or headline:Bournemouth";
+        let filter = "publisher:bbc.co.uk and publisher:theguardian.com and headline:Arsenal";
+        console.log('simple filter riha: ', filter);
         return filter;
+    }
+
+    buildFiltersArr(): string[]{
+        const queryObj = this.queryBuilderService.getQueryObj();
+        let filters: string[] = [];
+
+        queryObj.teamNames.forEach(tn => {
+          [queryObj.publication].concat(queryObj.competitors).forEach((p: Publication) => {
+            filters.push(`publisher:${p.domain} and headline:${tn}`);
+          });
+        })
+        console.log(filters);
+        return filters;
     }
 
     //get the top trending stories
@@ -46,16 +64,21 @@ export class RequestService{
         headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
         const body = JSON.stringify({
-          "filters": [
-                // "country_code:us OR country_code:gb and -publisher:youtube.com and headline:rihanna"
-                //"publisher:youtube.com and headline:rihanna"
-              this.buildFilters()
-            ],
+          // "filters": [
+          //   'publisher:bbc.co.uk and headline:Arsenal',
+          //   'publisher:theguardian.com and headline:Arsenal',
+          //   'publisher:bbc.co.uk and headline:Bournemouth',
+          //   'publisher:theguardian.com and headline:Bournemouth',
+          //       // "country_code:us OR country_code:gb and -publisher:youtube.com and headline:rihanna"
+          //       //"publisher:youtube.com and headline:rihanna"
+          //     //this.buildFilters()
+          //   ],
+            "filters": this.buildFiltersArr(),
             "language": "en",
             "video_only": false,
             "sort_by": "nw_max_score", //fb_total, twitter, linkedin, pinterest {{concatenate with}} count, min, max, avg, sum, sum_of_squares, variance, std_dev
             "find_related": false,
-            "size": 5,
+            "size": 50,
         });
 
         return this.http.post('https://api.newswhip.com/v1/articles?key=T4hC9wTT7p83C', '', { headers, body })
